@@ -1,1 +1,0 @@
-# godoy-sdk-go
