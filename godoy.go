@@ -34,8 +34,8 @@ type TokenResponse struct {
 }
 
 // NewGodoy returns a new instance of the Godoy API services
-func NewGodoy(email string, password string, debug bool) Godoy {
-	return Godoy{
+func NewGodoy(email string, password string, debug bool) *Godoy {
+	return &Godoy{
 		Email:    email,
 		Password: password,
 		Token:    "",
