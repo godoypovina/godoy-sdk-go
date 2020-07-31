@@ -25,12 +25,12 @@ type Articles struct {
 
 // GetAllArticles returns list of articles
 func (g *Godoy) GetAllArticles(query url.Values) (*Articles, error) {
-	articles := &Articles{}
+	articles := Articles{}
 
 	err := g.get("/articles", query, &articles)
 	if err != nil {
 		return nil, err
 	}
 
-	return articles, nil
+	return &articles, nil
 }

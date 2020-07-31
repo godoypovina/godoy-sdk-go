@@ -8,7 +8,6 @@ import (
 	"io/ioutil"
 	"log"
 	"net/http"
-	"net/http/httputil"
 	"net/url"
 )
 
@@ -21,7 +20,7 @@ const (
 
 // Godoy is the implementation to consume Godoy API services
 type Godoy struct {
-	Email    string
+	Username string
 	Password string
 	Token    string
 	Debug    bool
@@ -34,9 +33,9 @@ type TokenResponse struct {
 }
 
 // NewGodoy returns a new instance of the Godoy API services
-func NewGodoy(email string, password string, debug bool) *Godoy {
+func NewGodoy(username string, password string, debug bool) *Godoy {
 	return &Godoy{
-		Email:    email,
+		Username: username,
 		Password: password,
 		Token:    "",
 		Debug:    debug,
@@ -61,7 +60,7 @@ func (g *Godoy) obtainAccessToken() error {
 		Username string `json:"username"`
 		Password string `json:"password"`
 	}{
-		Username: g.Email,
+		Username: g.Username,
 		Password: g.Password,
 	}, &token)
 
@@ -105,6 +104,8 @@ func (g *Godoy) newRequest(method string, uri string, body io.Reader) (*http.Req
 		}
 	}
 
+	fmt.Printf("%+v", string(buf))
+
 	req, err := http.NewRequest(method, uri, bytes.NewBuffer(buf))
 	if err != nil {
 		return nil, err
@@ -137,14 +138,9 @@ func (g *Godoy) doRequest(method string, resource string, params url.Values, bod
 
 	client := &http.Client{}
 	resp, err := client.Do(req)
-
-	if err == nil {
-		if g.Debug {
-			debug(httputil.DumpResponse(resp, true))
-		}
+	if err != nil {
+		return err
 	}
-
-	defer resp.Body.Close()
 
 	buf, err := ioutil.ReadAll(resp.Body)
 	if err != nil {

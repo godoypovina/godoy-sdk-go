@@ -6,7 +6,7 @@ import (
 	"os"
 	"testing"
 
-	godoy "github.com/godoypovina/godoy-sdk-go"
+	"github.com/godoypovina/godoy-sdk-go"
 )
 
 const (
@@ -14,17 +14,12 @@ const (
 	TestPassword string = "Password1"
 )
 
-var g godoy.Godoy
+var g *godoy.Godoy
 
 func TestMain(m *testing.M) {
 	fmt.Println("Godoy SDK GO - Test : Main")
 
 	g = godoy.NewGodoy(TestEmail, TestPassword, true)
-
-	_, err := g.GetAccessToken()
-	if err != nil {
-		os.Exit(1)
-	}
 
 	//Run the other tests
 	os.Exit(m.Run())
