@@ -10,8 +10,8 @@ import (
 )
 
 const (
-	TestEmail    string = "javierf"
-	TestPassword string = "Password1"
+	TestEmail    string = ""
+	TestPassword string = ""
 )
 
 var g *godoy.Godoy
@@ -43,9 +43,16 @@ func TestAccessToken(t *testing.T) {
 }
 
 func TestGetAllArticles(t *testing.T) {
+	at, err := g.GetAccessToken()
+	if err != nil {
+		t.Fatalf("Error requesting an Access Token: %v", err)
+	}
+	if at == "" {
+		t.Errorf("Expected AccessToken to contain a value and is empty")
+	}
 	articles, err := g.GetAllArticles(url.Values{
 		"page":  {"1"},
-		"limit": {"5"},
+		"limit": {"100"},
 	})
 
 	if err != nil {
