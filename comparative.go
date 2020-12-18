@@ -2,27 +2,25 @@ package godoy
 
 import "net/url"
 
-// ArticleComparative ...
-type ArticleComparative struct {
-	Article struct {
-		Code         string  `json:"code"`
-		Name         string  `json:"name"`
-		BrandName    string  `json:"brand_name"`
-		Equivalence  uint    `json:"equivalence"`
-		PriceCostDlr float32 `json:"price_cost_dlr"`
-		PriceSaleDlr float32 `json:"price_sale_dlr"`
-		ProviderID   float32 `json:"provider_id"`
-	} `json:"article"`
+// ArticlesComparative ...
+type ArticlesComparative struct {
+	Articles []struct {
+		Code           string  `json:"code"`
+		PriceCostDlrT2 float32 `json:"price_cost_dlr_t2"`
+		PriceCostDlrT3 float32 `json:"price_cost_dlr_t3"`
+		PriceSaleDlr   float32 `json:"price_sale_dlr"`
+	} `json:"articles"`
+	Total int `json:"total"`
 }
 
-// GetArticleComparative returns an article
-func (g *Godoy) GetArticleComparative(query url.Values) (*ArticleComparative, error) {
-	article := ArticleComparative{}
+// GetAllArticlesComparative returns an article
+func (g *Godoy) GetAllArticlesComparative(query url.Values) (*ArticlesComparative, error) {
+	articles := ArticlesComparative{}
 
-	err := g.get("/comparative", query, &article)
+	err := g.get("/articles-comparative", nil, &articles)
 	if err != nil {
 		return nil, err
 	}
 
-	return &article, nil
+	return &articles, nil
 }

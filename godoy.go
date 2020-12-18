@@ -2,6 +2,7 @@ package godoy
 
 import (
 	"bytes"
+	"crypto/tls"
 	"encoding/json"
 	"fmt"
 	"io"
@@ -135,6 +136,8 @@ func (g *Godoy) doRequest(method string, resource string, params url.Values, bod
 	if err != nil {
 		return err
 	}
+
+	http.DefaultTransport.(*http.Transport).TLSClientConfig = &tls.Config{InsecureSkipVerify: true}
 
 	client := &http.Client{}
 	resp, err := client.Do(req)
