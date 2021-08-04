@@ -60,6 +60,18 @@ func (g *Godoy) GetAllArticles(query url.Values) (*Articles, error) {
 	return &articles, nil
 }
 
+// GetAllArticlesCatalogo returns list of articles
+func (g *Godoy) GetAllArticlesCatalogo(query url.Values) (*Articles, error) {
+	articles := Articles{}
+
+	err := g.get("/articles/catalogo", query, &articles)
+	if err != nil {
+		return nil, err
+	}
+
+	return &articles, nil
+}
+
 // GetArticle returns an article
 func (g *Godoy) GetArticle(code string) (*Article, error) {
 	article := Article{}
