@@ -21,7 +21,9 @@ type Articles struct {
 		Equivalence   uint    `json:"equivalence"`
 		ListID        uint    `json:"list_id"`
 		Line          string  `json:"line"`
+		LineID        string  `json:"line_id"`
 		LineGroup     string  `json:"line_group"`
+		LineGroupID   string  `json:"line_group_id"`
 	} `json:"articles"`
 	Total int `json:"total"`
 }
@@ -43,9 +45,22 @@ type Article struct {
 		Equivalence   uint    `json:"equivalence"`
 		ListID        uint    `json:"list_id"`
 		Line          string  `json:"line"`
+		LineID        string  `json:"line_id"`
 		LineGroup     string  `json:"line_group"`
+		LineGroupID   string  `json:"line_group_id"`
 		ProviderID    uint    `json:"provider_id"`
 	} `json:"article"`
+}
+
+// ArticlePack ...
+type ArticlePack struct {
+	Articles []struct {
+		Code  string  `json:"code"`
+		Price float32 `json:"price"`
+		Pack  string  `json:"pack"`
+		Nivel string  `json:"nivel"`
+	} `json:"articles"`
+	Total int `json:"total"`
 }
 
 // GetAllArticles returns list of articles
@@ -82,4 +97,16 @@ func (g *Godoy) GetArticle(code string) (*Article, error) {
 	}
 
 	return &article, nil
+}
+
+// GetAllArticlesPacks returns list of articles
+func (g *Godoy) GetAllArticlesPacks(query url.Values) (*ArticlePack, error) {
+	articles := ArticlePack{}
+
+	err := g.get("/articles/packs", query, &articles)
+	if err != nil {
+		return nil, err
+	}
+
+	return &articles, nil
 }

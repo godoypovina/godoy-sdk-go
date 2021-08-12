@@ -15,6 +15,9 @@ type Customers struct {
 		Cuit         string `json:"cuit"`
 		Code         string `json:"code"`
 		SellerName   string `json:"seller_name"`
+		Nivel1       string `json:"nivel1"`
+		Nivel2       string `json:"nivel2"`
+		Nivel3       string `json:"nivel3"`
 	} `json:"customers"`
 	Total int `json:"total"`
 }
