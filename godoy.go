@@ -15,9 +15,8 @@ import (
 const (
 	userAgent string = "Godoy Go SDK"
 	apiURL    string = "https://api.godoypovina.com.ar"
-	//apiURL   string = "http://localhost:5000"
-	version  string = "v1"
-	mimeJSON string = "application/json"
+	version   string = "v1"
+	mimeJSON  string = "application/json"
 )
 
 // Godoy is the implementation to consume Godoy API services
