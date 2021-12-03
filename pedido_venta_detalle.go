@@ -28,3 +28,14 @@ func (g *Godoy) GetPedidoVentaDetalle(number string, query url.Values) (*PedidoV
 
 	return &detalles, nil
 }
+
+func (g *Godoy) GetPedidoVentaDetalleUnigestion(number string, query url.Values) (*PedidoVentaDetalle, error) {
+	detalles := PedidoVentaDetalle{}
+
+	err := g.get("/uni/pedidos/"+number+"/detalle", query, &detalles)
+	if err != nil {
+		return nil, err
+	}
+
+	return &detalles, nil
+}
