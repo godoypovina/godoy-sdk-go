@@ -14,8 +14,8 @@ import (
 
 const (
 	userAgent string = "Godoy Go SDK"
-	apiURL    string = "https://api.godoypovina.com.ar"
-	//apiURL   string = "http://localhost:5000"
+	//apiURL    string = "https://api.godoypovina.com.ar"
+	apiURL   string = "http://localhost:5000"
 	version  string = "v1"
 	mimeJSON string = "application/json"
 )
@@ -144,6 +144,10 @@ func (g *Godoy) doRequest(method string, resource string, params url.Values, bod
 	resp, err := client.Do(req)
 	if err != nil {
 		return err
+	}
+
+	if resp.StatusCode != http.StatusOK {
+		return fmt.Errorf("%d %s", resp.StatusCode, resp.Status)
 	}
 
 	buf, err := ioutil.ReadAll(resp.Body)
