@@ -146,7 +146,7 @@ func (g *Godoy) doRequest(method string, resource string, params url.Values, bod
 		return err
 	}
 
-	if resp.StatusCode != http.StatusOK {
+	if !(resp.StatusCode >= 200 && resp.StatusCode <= 299) {
 		return fmt.Errorf("%d %s", resp.StatusCode, resp.Status)
 	}
 
