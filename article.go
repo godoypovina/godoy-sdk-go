@@ -55,10 +55,12 @@ type Article struct {
 // ArticlePack ...
 type ArticlePack struct {
 	Articles []struct {
-		Code  string  `json:"code"`
-		Price float32 `json:"price"`
-		Pack  string  `json:"pack"`
-		Nivel string  `json:"nivel"`
+		Code         string  `json:"code"`
+		Price        float32 `json:"price"`
+		Pack         string  `json:"pack"`
+		Nivel        string  `json:"nivel"`
+		PriceCostDlr float32 `json:"price_cost_dlr"`
+		PriceSaleDlr float32 `json:"price_sale_dlr"`
 	} `json:"articles"`
 	Total int `json:"total"`
 }
