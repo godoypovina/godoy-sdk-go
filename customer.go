@@ -52,7 +52,7 @@ func (g *Godoy) GetAllCustomers(query url.Values) (*Customers, error) {
 func (g *Godoy) GetAllCustomerCodes(query url.Values) (*CustomersCodes, error) {
 	customersCodes := CustomersCodes{}
 
-	err := g.get("/customersCodes", query, &customersCodes)
+	err := g.get("/clientsCodes", query, &customersCodes)
 	if err != nil {
 		return nil, err
 	}
