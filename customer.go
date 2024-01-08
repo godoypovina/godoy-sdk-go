@@ -27,7 +27,7 @@ type Customers struct {
 	Total int `json:"total"`
 }
 
-type CustomersCodes []struct {
+type CustomersCodes struct {
 	CustomersCodes []struct {
 		ErpClienteId               int    `json:"erp_cliente_id"`
 		GrupoProtheusCodigo        string `json:"grupo_protheus_codigo"`
