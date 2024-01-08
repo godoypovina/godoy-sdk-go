@@ -27,6 +27,15 @@ type Customers struct {
 	Total int `json:"total"`
 }
 
+type CustomersCodes struct {
+	ClientCode []struct {
+		ErpClienteId               int    `json:"erp_cliente_id"`
+		GrupoProtheusCodigo        string `json:"grupo_protheus_codigo"`
+		ProductoClienteCodigo      string `json:"producto_cliente_codigo"`
+		ProductoClienteDescripcion string `json:"producto_cliente_descripcion"`
+	}
+}
+
 // GetAllCustomers returns list of customers
 func (g *Godoy) GetAllCustomers(query url.Values) (*Customers, error) {
 	customers := Customers{}
@@ -37,4 +46,16 @@ func (g *Godoy) GetAllCustomers(query url.Values) (*Customers, error) {
 	}
 
 	return &customers, nil
+}
+
+// GetAllCustomers returns list of customersCodes
+func (g *Godoy) GetAllCustomerCodes(query url.Values) (*CustomersCodes, error) {
+	customersCodes := CustomersCodes{}
+
+	err := g.get("/customersCodes", query, &customersCodes)
+	if err != nil {
+		return nil, err
+	}
+
+	return &customersCodes, nil
 }
