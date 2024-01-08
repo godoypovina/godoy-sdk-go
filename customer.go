@@ -27,13 +27,14 @@ type Customers struct {
 	Total int `json:"total"`
 }
 
-type CustomersCodes struct {
-	ClientCode []struct {
+type CustomersCodes []struct {
+	CustomersCodes []struct {
 		ErpClienteId               int    `json:"erp_cliente_id"`
 		GrupoProtheusCodigo        string `json:"grupo_protheus_codigo"`
 		ProductoClienteCodigo      string `json:"producto_cliente_codigo"`
 		ProductoClienteDescripcion string `json:"producto_cliente_descripcion"`
-	}
+	} `json:"customers_codes"`
+	Total int `json:"total"`
 }
 
 // GetAllCustomers returns list of customers
