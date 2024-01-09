@@ -29,8 +29,8 @@ type Customers struct {
 
 type CustomersCode struct {
 	CustomersCodes []struct {
-		ErpClienteId               int    `json:"erp_cliente_id"`
-		GrupoProtheusCodigo        string `json:"grupo_protheus_codigo"`
+		ErpClienteId               string `json:"erp_cliente_id"`
+		ProductoProtheusCodigo     string `json:"producto_protheus_codigo"`
 		ProductoClienteCodigo      string `json:"producto_cliente_codigo"`
 		ProductoClienteDescripcion string `json:"producto_cliente_descripcion"`
 	} `json:"clients_codes"`
