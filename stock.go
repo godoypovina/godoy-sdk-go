@@ -1,6 +1,8 @@
 package godoy
 
-import "strconv"
+import (
+	"strconv"
+)
 
 // Stock ...
 type Stock struct {
@@ -19,6 +21,5 @@ func (g *Godoy) GetStock(code string, store int) (*Stock, error) {
 	if err != nil {
 		return nil, err
 	}
-
 	return &stock, nil
 }
