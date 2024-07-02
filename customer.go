@@ -35,6 +35,8 @@ type CustomersCode struct {
 		ProductoProtheusCodigo     string `json:"producto_protheus_codigo"`
 		ProductoClienteCodigo      string `json:"producto_cliente_codigo"`
 		ProductoClienteDescripcion string `json:"producto_cliente_descripcion"`
+		Homologado                 string `json:"homologado"`
+		DescripcionCliente         string `json:"descripcion_cliente"`
 	} `json:"clients_codes"`
 	Total int `json:"total"`
 }
