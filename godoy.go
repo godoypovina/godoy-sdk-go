@@ -14,8 +14,9 @@ import (
 
 const (
 	userAgent string = "Godoy Go SDK"
-	apiURL    string = "https://api.godoypovina.com.ar"
-	//apiURL   string = "http://192.168.1.7:5000"
+	//apiURL   string = "https://api.godoypovina.com.ar"
+	//apiURL   string = "http://localhost:5000"
+	apiURL   string = "http://192.168.1.238:5005"
 	version  string = "v1"
 	mimeJSON string = "application/json"
 )
