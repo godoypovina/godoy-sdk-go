@@ -14,6 +14,7 @@ type Articles struct {
 		PriceSaleDlr  float32 `json:"price_sale_dlr"`
 		Name          string  `json:"name"`
 		BrandName     string  `json:"brand_name"`
+		Bloqued       uint    `json:"bloqued"`
 		InnerDiameter float32 `json:"inner_diameter"`
 		OuterDiameter float32 `json:"outer_diameter"`
 		Width         float32 `json:"width"`
@@ -44,6 +45,7 @@ type Article struct {
 		Category      string  `json:"category"`
 		Equivalence   uint    `json:"equivalence"`
 		ListID        uint    `json:"list_id"`
+		Bloqued       uint    `json:"bloqued"`
 		Line          string  `json:"line"`
 		LineID        string  `json:"line_id"`
 		LineGroup     string  `json:"line_group"`
