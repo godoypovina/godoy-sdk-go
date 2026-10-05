@@ -23,6 +23,7 @@ type Customers struct {
 		PaymentConditionDays       string  `json:"payment_condition_days"`
 		Store                      string  `json:"store"`
 		FleteMontoMinimo           float32 `json:"flete_monto_minimo"`
+		PedidoMontoMinimo          float32 `json:"pedido_monto_minimo"`
 	} `json:"customers"`
 	Total int `json:"total"`
 }
